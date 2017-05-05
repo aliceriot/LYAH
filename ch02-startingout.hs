@@ -60,3 +60,13 @@ removeOdds biglist =
       | x <- lat 
       , even x ]
     | lat <- biglist ]
+
+triangles :: Integer -> [(Integer, Integer, Integer)]
+triangles n =
+    [ (a, b, c)
+    | c <- [1 .. n] 
+    , b <- [1 .. n] 
+    , a <- [1 .. n] 
+    , right a b c ]
+  where
+    right a b c = a ^ 2 + b ^ 2 == c ^ 2

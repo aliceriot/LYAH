@@ -1,7 +1,7 @@
 -- we like to worry about types, because it makes our code more explicit
 -- and less likely to be incorrect
 -- functions can have types as well!
-removeNonUppercase :: [Char] -> [Char]
+removeNonUppercase :: String -> String
 removeNonUppercase st =
     [ c
     | c <- st 
