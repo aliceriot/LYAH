@@ -1,3 +1,5 @@
+import Prelude
+
 --starting LYAH
 doubleMe x = x + x
 
@@ -18,6 +20,27 @@ boomBangs xs =
          else "Bang!"
     | x <- xs 
     , odd x ]
+
+fizzBuzz
+    :: (Integral a, Show a)
+    => a -> [String]
+fizzBuzz n =
+    [ fizz n
+    | n <- [1 .. n] ]
+  where
+    fizz n
+        | ((mod n 5) == 0) && ((mod n 3) == 0) = "fizzbuzz"
+        | ((mod n 3) == 0) = "fizz"
+        | ((mod n 5) == 0) = "buzz"
+        | otherwise = show n
+
+cartesian :: [a] -> [a] -> [[a]]
+cartesian [] _ = []
+cartesian _ [] = []
+cartesian xs ys =
+    [ [x, y]
+    | x <- xs 
+    , y <- ys ]
 
 -- list comprehension is really cool in haskell!
 -- better syntax and more powah compared with python, I think
