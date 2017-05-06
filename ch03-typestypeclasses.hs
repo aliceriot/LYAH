@@ -3,9 +3,9 @@
 -- functions can have types as well!
 removeNonUppercase :: String -> String
 removeNonUppercase st =
-    [ c
-    | c <- st 
-    , c `elem` ['A' .. 'Z'] ]
+  [ c
+  | c <- st 
+  , c `elem` ['A' .. 'Z'] ]
 
 addThree :: Int -> Int -> Int -> Int
 addThree x y z = x + y + z
