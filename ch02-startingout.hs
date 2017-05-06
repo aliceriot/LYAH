@@ -1,5 +1,3 @@
-import Prelude
-
 --starting LYAH
 doubleMe x = x + x
 
