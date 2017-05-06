@@ -12,6 +12,9 @@ sayMe :: Int -> String -- so you don't need to use type variable here
 sayMe 1 = "One!"
 sayMe x = "Not one..."
 
+badMatch :: [a] -> a
+badMatch [a] = a
+
 factorial
     :: (Integral a)
     => a -> a
@@ -164,9 +167,9 @@ calcBmis2 xs =
 -- pattern matching in function definitions is basically just
 -- syntactic sugar for the haskell case syntax
 -- we can rewrite
-head' :: [a] -> a
-head' [] = error "empty list..."
-head' (x:_) = x
+head'' :: [a] -> a
+head'' [] = error "empty list..."
+head'' (x:_) = x
 
 -- as
 head2' :: [a] -> a
