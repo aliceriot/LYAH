@@ -1,4 +1,7 @@
+import Data.List
+
 -- cool way to define a maximum function!
+-- 
 maximum'
   :: (Ord a)
   => [a] -> a
@@ -6,7 +9,7 @@ maximum' [] = error "empty list!"
 maximum' [x] = x
 maximum' (x:xs)
   | x > maxTail = x
-  | otherwise = maxTail
+  | otherwise = maximum' xs
   where
     maxTail = maximum' xs
 
@@ -36,11 +39,38 @@ replicate'
   => i -> a -> [a]
 -- i must be both Num and Ord - note that Ord is NOT a subclass
 -- of Num, so we can't just specify that
--- a stands for any class, which means we can replicate anything with this
+-- a stands for any type, which means we can replicate anything with this
 replicate' n x
   | n <= 0 = []
   | otherwise = x : replicate' (n - 1) x
 
+trim :: String -> String
+trim = leading . trailing
+  where
+    leading "" = ""
+    leading (x:xs) =
+      if x == ' '
+        then leading xs
+        else (x : xs)
+    trailing "" = ""
+    trailing xs =
+      if (last xs) == ' '
+        then trailing $ init xs
+        else xs
+
+trim' :: String -> String
+trim' = whitespace . reverse . whitespace . reverse
+  where
+    whitespace "" = ""
+    whitespace (' ':xs) = whitespace xs
+    whitespace xs = xs
+
+join :: String -> [String] -> String
+join sep str = foldl (++) "" $ intersperse sep str
+
+heys = replicate 10 "HEY"
+
+--   trim . foldl (\(a, b) -> a ++ b) 
 -- type declarations are difficult!
 -- take, a function which takes the first n items!
 take'
